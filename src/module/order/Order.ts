@@ -31,6 +31,14 @@ export class Order {
 
     constructor(productIds?: number[], totalPrice?: number) {
         if (productIds !== undefined && totalPrice !== undefined) {
+            if (productIds.length < 1 || productIds.length > 5) {
+                throw new Error('Une commande doit contenir entre 1 et 5 produits');
+            }
+
+            if (totalPrice < 2 || totalPrice > 500) {
+                throw new Error('Le prix total doit être compris entre 2€ et 500€');
+            }
+
             this.productIds = productIds;
             this.totalPrice = totalPrice;
             this.status = OrderStatus.PENDING;
