@@ -29,5 +29,12 @@ export class Order {
     })
     public status: OrderStatus;
 
-
+    constructor(productIds?: number[], totalPrice?: number) {
+        if (productIds !== undefined && totalPrice !== undefined) {
+            this.productIds = productIds;
+            this.totalPrice = totalPrice;
+            this.status = OrderStatus.PENDING;
+            this.createdAt = new Date();
+        }
+    }
 }
